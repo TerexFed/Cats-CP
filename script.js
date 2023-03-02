@@ -94,21 +94,27 @@ class Cats {
     }
 }
 
-let content = document.querySelector(".content")
-let catBlock = document.createElement("div")
-catBlock.className = "catBlock"
+let content = document.body.firstElementChild
+
 let data = []
 for(let i = 0;i<cats.length;i++){
     let cat = cats[i]
     data.push(new Cats(cat))
 }
-for (let i of data){
-    
-    catBlock.innerHTML += `<h1>${i.name} ID-${i.id}</h1>
-    <h3>Возраст-${i.age}</h3>
-    <h3>Рейтинг - ${i.rate}</h3>
-    <p>Описание - ${i.description}</p>
-    <span>Favourite? - ${i.favourite}</span>
-    `
-    content.append(catBlock)
+console.log(data)
+
+let html="";
+for(let val of data){
+    content.innerHTML += `<div class="Catcard" style="border: 3px solid black; margin: 5px; border-radius:10px; background-color: grey;">
+        <h1>${val.name} ID-${val.id}</h1>
+        <img src="${val.img_link}" height=200 width=200></img>
+        <h2>Рейтинг - ${val.rate}<h2>
+        <h3>Возраст - ${val.age}</h3>
+        <p>${val.description}</p>
+        <span>Одна из любимых? - ${val.favourite}</span>
+    </div>`
 }
+
+
+
+
